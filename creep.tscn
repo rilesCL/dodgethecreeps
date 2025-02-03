@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://de8ye3vc718o7"]
+
+[ext_resource type="Texture2D" uid="uid://cqhl5k6uouo78" path="res://art/enemyWalking_1.png" id="1_fm8bm"]
+[ext_resource type="Script" path="res://Creep.cs" id="1_xk1oq"]
+[ext_resource type="Texture2D" uid="uid://cdm8ox6wafx6x" path="res://art/enemyWalking_2.png" id="2_6xkn0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr6ii"]
+radius = 23.0
+height = 66.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eckk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fm8bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6xkn0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Creep" type="Node2D"]
+
+[node name="Creep" type="Area2D" parent="."]
+script = ExtResource("1_xk1oq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Creep"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tr6ii")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Creep"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eckk5")
+animation = &"walk"

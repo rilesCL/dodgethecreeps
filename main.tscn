@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdj4d3ptvlqai"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_n8qhf"]
+[ext_resource type="PackedScene" uid="uid://yn1irjml46t5" path="res://player.tscn" id="2_1i1qy"]
+[ext_resource type="PackedScene" uid="uid://de8ye3vc718o7" path="res://creep.tscn" id="2_hm4dt"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_n8qhf")
+creepScene = ExtResource("2_hm4dt")
+
+[node name="player" parent="." instance=ExtResource("2_1i1qy")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
